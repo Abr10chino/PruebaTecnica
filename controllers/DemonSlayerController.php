@@ -20,6 +20,9 @@ class DemonSlayerController
 
     public function show(int $id): void
     {
+
+        $maxNumber = count($this->demonSlayerModel->getCharacters());
+
         $character = $this->demonSlayerModel->getCharacterById($id);
 
         require __DIR__ . '/../views/demon-slayer-detail.php';

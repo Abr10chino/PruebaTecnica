@@ -10,6 +10,10 @@
     <title>Dragon Ball</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" href="https://images.seeklogo.com/logo-png/29/2/dragon-ball-super-logo-png_seeklogo-290968.png">   
+
+
 </head>
 
 <body>

@@ -6,7 +6,7 @@ class DragonBallModel
 {
     public function getCharacters(): array
     {
-        $url = DRAGON_BALL_API_URL . '/characters?limit=45';
+        $url = DRAGON_BALL_API_URL . '/characters?limit=100';
 
         $response = $this->makeRequest($url);
 

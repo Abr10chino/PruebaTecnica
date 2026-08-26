@@ -21,6 +21,7 @@
     </title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://1000logos.net/wp-content/uploads/2022/06/Demon-Slayer-Logo.png">  
 </head>
 
 <body>
@@ -174,6 +175,24 @@
 
                 </div>
 
+            </section>
+
+            <section style='display:flex; flex-direction:row; margin: 10px; gap:15px;'>
+                <?php if(((int) $character['id']-1) != 0): ?>
+                    <a
+                        class="back-button"
+                        href="index.php?action=demon-slayer-show&id=<?= (int) $character['id'] -1 ?>">
+                        ← Anterior
+                    </a>
+                <?php endif; ?>
+
+                <?php if(((int) $character['id']) != $maxNumber): ?>
+                    <a
+                        class="back-button"
+                        href="index.php?action=demon-slayer-show&id=<?= (int) $character['id'] +1 ?>">
+                        Siguiente ->
+                    </a>
+                <?php endif; ?>
             </section>
 
             <a

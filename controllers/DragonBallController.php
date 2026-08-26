@@ -20,8 +20,12 @@ class DragonBallController
 
     public function show(int $id): void
     {
-        $character =
-            $this->dragonBallModel->getCharacterById($id);
+
+        //Nota: El end solo funciona en versiones de php 8.0 en adelante
+
+        $lastId = end($this->dragonBallModel->getCharacters())['id'];
+
+        $character = $this->dragonBallModel->getCharacterById($id);
 
         require __DIR__ . '/../views/dragon-ball-detail.php';
     }

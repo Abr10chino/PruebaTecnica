@@ -16,43 +16,43 @@ switch($action){
         break;
     case 'demon-slayer':
         $controllerDemonSlayer->index();
+        break;
 
-        if ($action === 'demon-slayer-show') {
+    case 'demon-slayer-show':
 
-            $id = filter_input(
-                INPUT_GET,
-                'id',
-                FILTER_VALIDATE_INT
-            );
+        $id = filter_input(
+            INPUT_GET,
+            'id',
+            FILTER_VALIDATE_INT
+        );
 
-            if ($id === false || $id === null || $id <= 0) {
-                $controllerDemonSlayer->index();
-                exit;
-            }
-
-            $controllerDemonSlayer->show($id);
+        if ($id === false || $id === null || $id <= 0) {
+            $controllerDemonSlayer->index();
             exit;
         }
+
+        $controllerDemonSlayer->show($id);
 
         break;
 
     case 'dragon-ball':
         $controllerDragonBall->index();
+        break;
 
-        if ($action === 'dragon-ball-show') {
+    case 'dragon-ball-show':
 
-            $id = filter_input(
-                INPUT_GET,
-                'id',
-                FILTER_VALIDATE_INT
-            );
+        $id = filter_input(
+            INPUT_GET,
+            'id',
+            FILTER_VALIDATE_INT
+        );
 
-            if ($id === false || $id === null || $id <= 0) {
-                $controllerDragonBall->index();
-                exit;
-            }
-
-            $controllerDragonBall->show($id);
+        if ($id === false || $id === null || $id <= 0) {
+            $controllerDragonBall->index();
             exit;
         }
+
+        $controllerDragonBall->show($id);
+
+        break;
 }

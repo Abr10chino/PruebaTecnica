@@ -21,6 +21,7 @@
     </title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://images.seeklogo.com/logo-png/29/2/dragon-ball-super-logo-png_seeklogo-290968.png">  
 </head>
 
 <body>
@@ -127,6 +128,24 @@
 
                 </div>
 
+            </section>
+
+            <section style='display:flex; flex-direction:row; margin: 10px; gap:15px;'>
+                <?php if(((int) $character['id']-1) != 0): ?>
+                    <a
+                        class="back-button"
+                        href="index.php?action=dragon-ball-show&id=<?= (int) $character['id'] -1 ?>">
+                        ← Anterior
+                    </a>
+                <?php endif; ?>
+
+                <?php if(((int) $character['id']) != $lastId): ?>
+                    <a
+                        class="back-button"
+                        href="index.php?action=dragon-ball-show&id=<?= (int) $character['id'] +1 ?>">
+                        Siguiente ->
+                    </a>
+                <?php endif; ?>
             </section>
 
             <a

@@ -10,6 +10,7 @@
     <title>Demon Slayer</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://1000logos.net/wp-content/uploads/2022/06/Demon-Slayer-Logo.png">  
 </head>
 
 <body>
