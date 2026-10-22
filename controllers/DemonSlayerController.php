@@ -11,9 +11,13 @@ class DemonSlayerController
         $this->demonSlayerModel = new DemonSlayerModel();
     }
 
-    public function index(): void
+    public function index(?int $page = 1): void
     {
-        $characters = $this->demonSlayerModel->getCharacters();
+        $page = $page ?? 1;
+
+        $pagination = $this->demonSlayerModel->getPagination();
+
+        $characters = $this->demonSlayerModel->getCharactersByPages($page);
 
         require __DIR__ . '/../views/demon-slayer.php';
     }
@@ -21,7 +25,10 @@ class DemonSlayerController
     public function show(int $id): void
     {
 
-        $maxNumber = count($this->demonSlayerModel->getCharacters());
+
+        $pagination = $this->demonSlayerModel->getPagination();
+        
+        $maxNumber = $pagination['totalItems'] ?? 50;
 
         $character = $this->demonSlayerModel->getCharacterById($id);
 

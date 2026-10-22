@@ -11,19 +11,22 @@ class DragonBallController
         $this->dragonBallModel = new DragonBallModel();
     }
 
-    public function index(): void
+    public function index(?int $page = 1): void
     {
-        $characters = $this->dragonBallModel->getCharacters();
+        $page = $page ?? 1;
+        $limit = 5;
+
+        $pagination = $this->dragonBallModel->getPagination();
+
+        $characters = $this->dragonBallModel->getCharactersByPages($limit, $page);
 
         require __DIR__ . '/../views/dragon-ball.php';
     }
 
     public function show(int $id): void
     {
-
-        //Nota: El end solo funciona en versiones de php 8.0 en adelante
-
-        $lastId = end($this->dragonBallModel->getCharacters())['id'];
+        $pagination = $this->dragonBallModel->getPagination();
+        $maxNumber = $pagination['totalItems'] ?? ($pagination['total'] ?? 58);
 
         $character = $this->dragonBallModel->getCharacterById($id);
 

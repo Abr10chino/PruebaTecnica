@@ -6,7 +6,53 @@ class DemonSlayerModel
 {
     public function getCharacters(): array
     {
-        $url = DEMON_SLAYER_API_URL . '/characters?limit=45';
+        $url = DEMON_SLAYER_API_URL . '/characters';
+
+        $response = $this->makeRequest($url);
+
+        if ($response === null) {
+            return [];
+        }
+
+        if (
+            !isset($response['content']) ||
+            !is_array($response['content'])
+        ) {
+            return [];
+        }
+
+        return $response['content'];
+    }
+
+    public function getPagination(): array{
+
+        $limit = 5;
+
+        $url = DEMON_SLAYER_API_URL . '/characters?limit=' . $limit . '&page=1';
+
+        $response = $this->makeRequest($url);
+
+        if ($response === null) {
+            return [];
+        }
+
+        if (
+            !isset($response['pagination']) ||
+            !is_array($response['pagination'])
+        ) {
+            return [];
+        }
+
+        return $response['pagination'];
+
+    }
+
+    public function getCharactersByPages(int $page): array
+    {
+
+        $limit = 5;
+
+        $url = DEMON_SLAYER_API_URL . '/characters?limit=' . $limit . '&page=' . $page;
 
         $response = $this->makeRequest($url);
 

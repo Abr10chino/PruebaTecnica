@@ -20,7 +20,7 @@
         <?php endif; ?>
     </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <link rel="icon" type="image/png" href="https://images.seeklogo.com/logo-png/29/2/dragon-ball-super-logo-png_seeklogo-290968.png">  
 </head>
 
@@ -130,7 +130,7 @@
 
             </section>
 
-            <section style='display:flex; flex-direction:row; margin: 10px; gap:15px;'>
+            <section style='display:flex; flex-direction:row; margin: 10px; gap:15px; justify-content:center; align-items:center;'>
                 <?php if(((int) $character['id']-1) != 0): ?>
                     <a
                         class="back-button"
@@ -139,20 +139,20 @@
                     </a>
                 <?php endif; ?>
 
-                <?php if(((int) $character['id']) != $lastId): ?>
+                <a
+                    class="back-button"
+                    href="index.php?action=dragon-ball">
+                    ← Regresar a personajes
+                </a>
+
+                <?php if(((int) $character['id']) < $maxNumber): ?>
                     <a
                         class="back-button"
                         href="index.php?action=dragon-ball-show&id=<?= (int) $character['id'] +1 ?>">
-                        Siguiente ->
+                        Siguiente →
                     </a>
                 <?php endif; ?>
             </section>
-
-            <a
-                class="back-button"
-                href="index.php?action=dragon-ball">
-                ← Regresar a personajes
-            </a>
 
         </main>
 

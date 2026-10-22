@@ -9,7 +9,7 @@
 
     <title>Dragon Ball</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public/style.css">
 
     <link rel="icon" type="image/png" href="https://images.seeklogo.com/logo-png/29/2/dragon-ball-super-logo-png_seeklogo-290968.png">   
 
@@ -70,7 +70,35 @@
 
     </main>
 
-    <div class="navigation-container">
+    <section style='display:flex; flex-direction:row; margin: 10px; gap:15px; justify-content:center; align-items:center;'>
+        <?php 
+        $totalPages = $pagination['totalPages'] ?? 1;
+        $prevPage = max(1, $page - 1);
+        $nextPage = min($totalPages, $page + 1);
+        ?>
+
+        <a class="back-button" href="index.php?action=dragon-ball&page=1">
+            &lt;&lt;
+        </a>
+
+        <a class="back-button" href="index.php?action=dragon-ball&page=<?= $prevPage ?>">
+            &lt;
+        </a>
+
+        <a class="back-button" style="background-color: #444;" href="index.php?action=dragon-ball&page=<?= $page ?>">
+            <?= $page ?>
+        </a>
+
+        <a class="back-button" href="index.php?action=dragon-ball&page=<?= $nextPage ?>">
+            &gt;
+        </a>
+
+        <a class="back-button" href="index.php?action=dragon-ball&page=<?= $totalPages ?>">
+            &gt;&gt;
+        </a>
+    </section>
+
+    <div class="navigation-container" style="display:flex; justify-content:center; margin-bottom: 20px;">
 
         <a
             class="back-button"

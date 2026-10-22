@@ -15,7 +15,17 @@ switch($action){
         $controllerDashboard->index();
         break;
     case 'demon-slayer':
-        $controllerDemonSlayer->index();
+        
+        $page = filter_input(
+
+            INPUT_GET,
+            'page',
+            FILTER_VALIDATE_INT
+
+        );
+        
+        $controllerDemonSlayer->index($page);
+
         break;
 
     case 'demon-slayer-show':
@@ -27,7 +37,7 @@ switch($action){
         );
 
         if ($id === false || $id === null || $id <= 0) {
-            $controllerDemonSlayer->index();
+            $controllerDemonSlayer->index(1);
             exit;
         }
 
@@ -36,7 +46,16 @@ switch($action){
         break;
 
     case 'dragon-ball':
-        $controllerDragonBall->index();
+
+        $page = filter_input(
+
+            INPUT_GET,
+            'page',
+            FILTER_VALIDATE_INT
+
+        )?:1;
+
+        $controllerDragonBall->index($page);
         break;
 
     case 'dragon-ball-show':

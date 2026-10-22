@@ -6,7 +6,49 @@ class DragonBallModel
 {
     public function getCharacters(): array
     {
-        $url = DRAGON_BALL_API_URL . '/characters?limit=100';
+        $url = DRAGON_BALL_API_URL . '/characters';
+
+        $response = $this->makeRequest($url);
+
+        if ($response === null) {
+            return [];
+        }
+
+        if (
+            !isset($response['items']) ||
+            !is_array($response['items'])
+        ) {
+            return [];
+        }
+
+        return $response['items'];
+    }
+
+    public function getPagination(): array
+    {
+        $limit = 5;
+
+        $url = DRAGON_BALL_API_URL . '/characters?limit=' . $limit . '&page=1';
+
+        $response = $this->makeRequest($url);
+
+        if ($response === null) {
+            return [];
+        }
+
+        if (
+            !isset($response['meta']) ||
+            !is_array($response['meta'])
+        ) {
+            return [];
+        }
+
+        return $response['meta'];
+    }
+
+    public function getCharactersByPages(int $limit, int $page): array
+    {
+        $url = DRAGON_BALL_API_URL . '/characters?limit=' . $limit . '&page=' . $page;
 
         $response = $this->makeRequest($url);
 
